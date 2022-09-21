@@ -1,6 +1,6 @@
 {
-    "name": "berry-material-react-ts",
-    "version": "3.1.2",
+    "name": "rastro-web-react",
+    "version": "1.0",
     "private": true,
     "dependencies": {
         "@auth0/auth0-spa-js": "^1.21.1",
