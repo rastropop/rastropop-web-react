@@ -97,7 +97,7 @@ const FirebaseRegister = ({ ...others }) => {
                             <Box sx={{ mr: { xs: 1, sm: 2, width: 20 } }}>
                                 <img src={Google} alt="google" width={16} height={16} style={{ marginRight: matchDownSM ? 8 : 16 }} />
                             </Box>
-                            Sign up with Google
+                            Cadastro com o Google
                         </Button>
                     </AnimateButton>
                 </Grid>
@@ -129,7 +129,7 @@ const FirebaseRegister = ({ ...others }) => {
                 </Grid>
                 <Grid item xs={12} container alignItems="center" justifyContent="center">
                     <Box sx={{ mb: 2 }}>
-                        <Typography variant="subtitle1">Sign up with Email address</Typography>
+                        <Typography variant="subtitle1">Cadastrar com Email</Typography>
                     </Box>
                 </Grid>
             </Grid>
@@ -177,7 +177,7 @@ const FirebaseRegister = ({ ...others }) => {
                             <Grid item xs={12} sm={6}>
                                 <TextField
                                     fullWidth
-                                    label="First Name"
+                                    label="Nome"
                                     margin="normal"
                                     name="fname"
                                     type="text"
@@ -188,7 +188,7 @@ const FirebaseRegister = ({ ...others }) => {
                             <Grid item xs={12} sm={6}>
                                 <TextField
                                     fullWidth
-                                    label="Last Name"
+                                    label="Sobrenome"
                                     margin="normal"
                                     name="lname"
                                     type="text"
@@ -198,7 +198,7 @@ const FirebaseRegister = ({ ...others }) => {
                             </Grid>
                         </Grid>
                         <FormControl fullWidth error={Boolean(touched.email && errors.email)} sx={{ ...theme.typography.customInput }}>
-                            <InputLabel htmlFor="outlined-adornment-email-register">Email Address / Username</InputLabel>
+                            <InputLabel htmlFor="outlined-adornment-email-register">Email</InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-email-register"
                                 type="email"
@@ -220,7 +220,7 @@ const FirebaseRegister = ({ ...others }) => {
                             error={Boolean(touched.password && errors.password)}
                             sx={{ ...theme.typography.customInput }}
                         >
-                            <InputLabel htmlFor="outlined-adornment-password-register">Password</InputLabel>
+                            <InputLabel htmlFor="outlined-adornment-password-register">Senha</InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-password-register"
                                 type={showPassword ? 'text' : 'password'}
@@ -274,28 +274,6 @@ const FirebaseRegister = ({ ...others }) => {
                             </FormControl>
                         )}
 
-                        <Grid container alignItems="center" justifyContent="space-between">
-                            <Grid item>
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox
-                                            checked={checked}
-                                            onChange={(event) => setChecked(event.target.checked)}
-                                            name="checked"
-                                            color="primary"
-                                        />
-                                    }
-                                    label={
-                                        <Typography variant="subtitle1">
-                                            Agree with &nbsp;
-                                            <Typography variant="subtitle1" component={Link} to="#">
-                                                Terms & Condition.
-                                            </Typography>
-                                        </Typography>
-                                    }
-                                />
-                            </Grid>
-                        </Grid>
                         {errors.submit && (
                             <Box sx={{ mt: 3 }}>
                                 <FormHelperText error>{errors.submit}</FormHelperText>
@@ -313,7 +291,7 @@ const FirebaseRegister = ({ ...others }) => {
                                     variant="contained"
                                     color="secondary"
                                 >
-                                    Sign up
+                                    Cadastrar-se
                                 </Button>
                             </AnimateButton>
                         </Box>

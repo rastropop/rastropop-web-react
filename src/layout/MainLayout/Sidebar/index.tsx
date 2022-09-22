@@ -51,10 +51,7 @@ const Sidebar = ({ window }: SidebarProps) => {
                 }}
             >
                 <MenuList />
-                <MenuCard />
-                <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
-                    <Chip label={process.env.REACT_APP_VERSION} disabled chipcolor="secondary" size="small" sx={{ cursor: 'pointer' }} />
-                </Stack>
+                <Stack direction="row" justifyContent="center" sx={{ mb: 2 }} />
             </PerfectScrollbar>
         ),
         // eslint-disable-next-line react-hooks/exhaustive-deps

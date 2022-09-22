@@ -9,7 +9,6 @@ import AuthWrapper1 from '../AuthWrapper1';
 import AuthCardWrapper from '../AuthCardWrapper';
 import Logo from 'ui-component/Logo';
 import AnimateButton from 'ui-component/extended/AnimateButton';
-import AuthFooter from 'ui-component/cards/AuthFooter';
 
 // assets
 
@@ -72,9 +71,6 @@ const CheckMail = () => {
                             </AuthCardWrapper>
                         </Grid>
                     </Grid>
-                </Grid>
-                <Grid item xs={12} sx={{ m: 3, mt: 1 }}>
-                    <AuthFooter />
                 </Grid>
             </Grid>
         </AuthWrapper1>

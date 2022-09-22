@@ -10,7 +10,6 @@ import AuthCardWrapper from '../AuthCardWrapper';
 import Logo from 'ui-component/Logo';
 import AnimateButton from 'ui-component/extended/AnimateButton';
 import AuthCodeVerification from './auth-forms/AuthCodeVerification';
-import AuthFooter from 'ui-component/cards/AuthFooter';
 
 // assets
 
@@ -100,9 +99,6 @@ const CodeVerification = () => {
                             </AuthCardWrapper>
                         </Grid>
                     </Grid>
-                </Grid>
-                <Grid item xs={12} sx={{ m: 3, mt: 1 }}>
-                    <AuthFooter />
                 </Grid>
             </Grid>
         </AuthWrapper1>

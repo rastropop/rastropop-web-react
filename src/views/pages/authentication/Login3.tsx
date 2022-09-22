@@ -9,7 +9,6 @@ import AuthWrapper1 from '../AuthWrapper1';
 import AuthCardWrapper from '../AuthCardWrapper';
 import AuthLogin from './auth-forms/AuthLogin';
 import Logo from 'ui-component/Logo';
-import AuthFooter from 'ui-component/cards/AuthFooter';
 import useAuth from 'hooks/useAuth';
 
 // assets
@@ -48,14 +47,7 @@ const Login = () => {
                                                         gutterBottom
                                                         variant={matchDownSM ? 'h3' : 'h2'}
                                                     >
-                                                        Hi, Welcome Back
-                                                    </Typography>
-                                                    <Typography
-                                                        variant="caption"
-                                                        fontSize="16px"
-                                                        textAlign={matchDownSM ? 'center' : 'inherit'}
-                                                    >
-                                                        Enter your credentials to continue
+                                                        Seja bem Vindo
                                                     </Typography>
                                                 </Stack>
                                             </Grid>
@@ -75,7 +67,7 @@ const Login = () => {
                                                 variant="subtitle1"
                                                 sx={{ textDecoration: 'none' }}
                                             >
-                                                Don&apos;t have an account?
+                                                Cadastra-se
                                             </Typography>
                                         </Grid>
                                     </Grid>
@@ -83,9 +75,6 @@ const Login = () => {
                             </AuthCardWrapper>
                         </Grid>
                     </Grid>
-                </Grid>
-                <Grid item xs={12} sx={{ m: 3, mt: 1 }}>
-                    <AuthFooter />
                 </Grid>
             </Grid>
         </AuthWrapper1>

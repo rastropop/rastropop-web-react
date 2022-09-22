@@ -104,7 +104,7 @@ const AuthForgotPassword = ({ ...others }) => {
                                 variant="contained"
                                 color="secondary"
                             >
-                                Send Mail
+                                Enviar Email
                             </Button>
                         </AnimateButton>
                     </Box>

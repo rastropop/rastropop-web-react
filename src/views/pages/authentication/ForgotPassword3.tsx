@@ -9,7 +9,6 @@ import AuthWrapper1 from '../AuthWrapper1';
 import AuthCardWrapper from '../AuthCardWrapper';
 import Logo from 'ui-component/Logo';
 import AuthForgotPassword from './auth-forms/AuthForgotPassword';
-import AuthFooter from 'ui-component/cards/AuthFooter';
 import useAuth from 'hooks/useAuth';
 
 // ============================|| AUTH3 - FORGOT PASSWORD ||============================ //
@@ -40,7 +39,7 @@ const ForgotPassword = () => {
                                                     gutterBottom
                                                     variant={matchDownSM ? 'h3' : 'h2'}
                                                 >
-                                                    Forgot password?
+                                                    Esqueceu sua senha?
                                                 </Typography>
                                             </Grid>
                                             <Grid item xs={12}>
@@ -64,7 +63,7 @@ const ForgotPassword = () => {
                                                 variant="subtitle1"
                                                 sx={{ textDecoration: 'none' }}
                                             >
-                                                Already have an account?
+                                                Já tem conta ?
                                             </Typography>
                                         </Grid>
                                     </Grid>
@@ -72,9 +71,6 @@ const ForgotPassword = () => {
                             </AuthCardWrapper>
                         </Grid>
                     </Grid>
-                </Grid>
-                <Grid item xs={12} sx={{ m: 3, mt: 1 }}>
-                    <AuthFooter />
                 </Grid>
             </Grid>
         </AuthWrapper1>

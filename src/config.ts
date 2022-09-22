@@ -7,14 +7,26 @@ export const JWT_API = {
 };
 
 export const FIREBASE_API = {
-    apiKey: 'AIzaSyBernKzdSojh_vWXBHt0aRhf5SC9VLChbM',
-    authDomain: 'berry-material-react.firebaseapp.com',
-    projectId: 'berry-material-react',
-    storageBucket: 'berry-material-react.appspot.com',
-    messagingSenderId: '901111229354',
-    appId: '1:901111229354:web:a5ae5aa95486297d69d9d3',
-    measurementId: 'G-MGJHSL8XW3'
+    apiKey: 'AIzaSyDH_7_wOu01itmJsIpkMuOuyax5G8LwTkU',
+    authDomain: 'letmeask-e9ab2.firebaseapp.com',
+    databaseURL: 'https://letmeask-e9ab2-default-rtdb.firebaseio.com',
+    storageBucket: 'letmeask-e9ab2.appspot.com',
+    projectId: 'letmeask-e9ab2',
+    messagingSenderId: '1003465770184',
+    appId: '1:1003465770184:web:1eea8bc99ad6f99c17d1fd'
 };
+
+// PRODUÇÃO
+// export const FIREBASE_API = {
+//     apiKey: 'AIzaSyC3EY_L-Ta9FE-NroYE99qjDtzLxZLDFDU',
+//     authDomain: 'rastropopvteste.firebaseapp.com',
+//     databaseURL: 'https://rastropopvteste.firebaseio.com',
+//     projectId: 'rastropopvteste',
+//     storageBucket: 'rastropopvteste.appspot.com',
+//     messagingSenderId: '59973707510',
+//     appId: '1:59973707510:web:42606446708c7af22beed7',
+//     measurementId: 'G-Z1P6X79D2J'
+// };
 
 export const AUTH0_API = {
     client_id: '7T4IlWis4DKHSbG8JAye4Ipk0rvXkH9V',
@@ -30,15 +42,15 @@ export const AWS_API = {
 // like '/berry-material-react/react/default'
 export const BASE_PATH = '';
 
-export const DASHBOARD_PATH = '/sample-page';
+export const DASHBOARD_PATH = '/dashboard';
 
 const config: ConfigProps = {
     fontFamily: `'Roboto', sans-serif`,
     borderRadius: 8,
     outlinedFilled: true,
-    navType: 'light', // light, dark
+    navType: 'dark', // light, dark
     presetColor: 'default', // default, theme1, theme2, theme3, theme4, theme5, theme6
-    locale: 'en', // 'en' - English, 'fr' - French, 'ro' - Romanian, 'zh' - Chinese
+    locale: 'pt', // 'en' - English, 'fr' - French, 'ro' - Romanian, 'zh' - Chinese
     rtlLayout: false,
     container: false
 };

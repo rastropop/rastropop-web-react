@@ -18,30 +18,12 @@ const other = {
     type: 'group',
     children: [
         {
-            id: 'sample-page',
-            title: <FormattedMessage id="sample-page" />,
+            id: 'Dashboard',
+            title: <FormattedMessage id="Dashboard" />,
             type: 'item',
-            url: '/sample-page',
+            url: '/dashboard',
             icon: icons.IconBrandChrome,
             breadcrumbs: false
-        },
-        {
-            id: 'documentation',
-            title: <FormattedMessage id="documentation" />,
-            type: 'item',
-            url: 'https://codedthemes.gitbook.io/berry/',
-            icon: icons.IconHelp,
-            external: true,
-            target: true
-        },
-        {
-            id: 'roadmap',
-            title: <FormattedMessage id="roadmap" />,
-            type: 'item',
-            url: 'https://codedthemes.gitbook.io/berry/roadmap',
-            icon: icons.IconSitemap,
-            external: true,
-            target: true
         }
     ]
 };

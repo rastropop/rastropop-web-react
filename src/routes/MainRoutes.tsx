@@ -23,7 +23,7 @@ const MainRoutes = {
             element: <SamplePage />
         },
         {
-            path: '/sample-page',
+            path: '/dashboard',
             element: <SamplePage />
         }
     ]

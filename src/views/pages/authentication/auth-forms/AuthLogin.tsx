@@ -130,8 +130,8 @@ const FirebaseLogin = ({ loginProp, ...others }: { loginProp?: number }) => {
 
             <Formik
                 initialValues={{
-                    email: 'info@codedthemes.com',
-                    password: '123456',
+                    email: '',
+                    password: '',
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({
@@ -168,7 +168,7 @@ const FirebaseLogin = ({ loginProp, ...others }: { loginProp?: number }) => {
                 {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
                     <form noValidate onSubmit={handleSubmit} {...others}>
                         <FormControl fullWidth error={Boolean(touched.email && errors.email)} sx={{ ...theme.typography.customInput }}>
-                            <InputLabel htmlFor="outlined-adornment-email-login">Email Address / Username</InputLabel>
+                            <InputLabel htmlFor="outlined-adornment-email-login">Email / Username</InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-email-login"
                                 type="email"
@@ -191,7 +191,7 @@ const FirebaseLogin = ({ loginProp, ...others }: { loginProp?: number }) => {
                             error={Boolean(touched.password && errors.password)}
                             sx={{ ...theme.typography.customInput }}
                         >
-                            <InputLabel htmlFor="outlined-adornment-password-login">Password</InputLabel>
+                            <InputLabel htmlFor="outlined-adornment-password-login">Senha</InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-password-login"
                                 type={showPassword ? 'text' : 'password'}
@@ -236,15 +236,11 @@ const FirebaseLogin = ({ loginProp, ...others }: { loginProp?: number }) => {
                             <Typography
                                 variant="subtitle1"
                                 component={Link}
-                                to={
-                                    loginProp
-                                        ? `/pages/forgot-password/forgot-password${loginProp}`
-                                        : '/pages/forgot-password/forgot-password3'
-                                }
+                                to={loginProp ? `/pages/forgot-password/forgot-password${loginProp}` : '/forgot'}
                                 color="secondary"
                                 sx={{ textDecoration: 'none' }}
                             >
-                                Forgot Password?
+                                Esqueceu sua senha ?
                             </Typography>
                         </Stack>
                         {errors.submit && (
@@ -264,7 +260,7 @@ const FirebaseLogin = ({ loginProp, ...others }: { loginProp?: number }) => {
                                     variant="contained"
                                     color="secondary"
                                 >
-                                    Sign in
+                                    Entrar
                                 </Button>
                             </AnimateButton>
                         </Box>
