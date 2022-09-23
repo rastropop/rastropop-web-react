@@ -29,8 +29,8 @@ export const FIREBASE_API = {
 // };
 
 export const AUTH0_API = {
-    client_id: '7T4IlWis4DKHSbG8JAye4Ipk0rvXkH9V',
-    domain: 'dev-w0-vxep3.us.auth0.com'
+    client_id: 'M8fjEqNTnMCTkPn2XvQMxvfKi6yS46Bv',
+    domain: 'dev-sa0l5fl9.us.auth0.com'
 };
 
 export const AWS_API = {
