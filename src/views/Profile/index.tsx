@@ -29,7 +29,7 @@ function a11yProps(index: number) {
     };
 }
 
-const Profile3 = () => {
+const Profile = () => {
     const [value, setValue] = React.useState(0);
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
@@ -86,4 +86,4 @@ const Profile3 = () => {
     );
 };
 
-export default Profile3;
+export default Profile;

@@ -1,17 +1,16 @@
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Avatar, Box } from '@mui/material';
+import { Avatar, Box, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
 
 // project imports
 import LogoSection from '../LogoSection';
-import SearchSection from './SearchSection';
 import MobileSection from './MobileSection';
-import ProfileSection from './ProfileSection';
 import { useDispatch, useSelector } from 'store';
 import { openDrawer } from 'store/slices/menu';
+import useAuth from 'hooks/useAuth';
 
 // assets
-import { IconMenu2 } from '@tabler/icons';
+import { IconLogout, IconMenu2 } from '@tabler/icons';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
@@ -19,7 +18,17 @@ const Header = () => {
     const theme = useTheme();
 
     const dispatch = useDispatch();
+    const { logout } = useAuth();
+
     const { drawerOpen } = useSelector((state) => state.menu);
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     return (
         <>
@@ -57,14 +66,13 @@ const Header = () => {
                 </Avatar>
             </Box>
 
-            {/* header search */}
-            <SearchSection />
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ flexGrow: 1 }} />
-
             {/* mega-menu */}
-
-            <ProfileSection />
+            <ListItemButton onClick={handleLogout}>
+                <ListItemIcon>
+                    <IconLogout stroke={1.5} size="1.3rem" />
+                </ListItemIcon>
+                <ListItemText primary={<Typography variant="body2">Logout</Typography>} />
+            </ListItemButton>
 
             {/* mobile header */}
             <Box sx={{ display: { xs: 'block', sm: 'none' } }}>

@@ -190,8 +190,6 @@ const ProfileSection = () => {
                                         </Box>
                                         <PerfectScrollbar style={{ height: '100%', maxHeight: 'calc(100vh - 250px)', overflowX: 'hidden' }}>
                                             <Box sx={{ p: 2, pt: 0 }}>
-                                                <UpgradePlanCard />
-                                                <Divider />
                                                 <Card
                                                     sx={{
                                                         bgcolor:
