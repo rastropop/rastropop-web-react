@@ -33,6 +33,11 @@ export type UserProfile = {
     time?: string;
     tier?: string;
     Progress?: ProfileProgress;
+    address?: string;
+    cpf?: string;
+    cnpj?: string;
+    rg?: string;
+    created_at?: Date | {};
 };
 
 export type Profile = {
