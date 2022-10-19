@@ -35,13 +35,10 @@ const FirebaseContext = createContext<FirebaseContextType | null>(null);
 export const FirebaseProvider = ({ children }: { children: React.ReactElement }) => {
     const [state, dispatch] = useReducer(accountReducer, initialState);
 
-    const [newUser, setNewUser] = React.useState<firebase.firestore.DocumentData | undefined>([]);
-
     const getUser = async (id: string) => {
         const docRef: UserProfile | firebase.firestore.DocumentData | undefined = (
             await firebase.firestore().collection('users').doc(id).get()
         ).data();
-        setNewUser(docRef);
 
         dispatch({
             type: LOGIN,
@@ -60,8 +57,6 @@ export const FirebaseProvider = ({ children }: { children: React.ReactElement })
                 }
             }
         });
-
-        return docRef;
     };
 
     useEffect(
