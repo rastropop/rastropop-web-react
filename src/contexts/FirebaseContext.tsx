@@ -1,8 +1,10 @@
+/* eslint-disable consistent-return */
 import React, { createContext, useEffect, useReducer } from 'react';
 
 // third-party
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 // action - state management
 import { LOGIN, LOGOUT } from 'store/actions';
@@ -12,6 +14,7 @@ import accountReducer from 'store/accountReducer';
 import Loader from 'ui-component/Loader';
 import { FIREBASE_API } from 'config';
 import { FirebaseContextType, InitialLoginContextProps } from 'types/auth';
+import { UserProfile } from 'types/user-profile';
 
 // firebase initialize
 if (!firebase.apps.length) {
@@ -32,21 +35,35 @@ const FirebaseContext = createContext<FirebaseContextType | null>(null);
 export const FirebaseProvider = ({ children }: { children: React.ReactElement }) => {
     const [state, dispatch] = useReducer(accountReducer, initialState);
 
+    const getUser = async (id: string) => {
+        const docRef: UserProfile | firebase.firestore.DocumentData | undefined = (
+            await firebase.firestore().collection('users').doc(id).get()
+        ).data();
+
+        dispatch({
+            type: LOGIN,
+            payload: {
+                isLoggedIn: true,
+                user: {
+                    id: docRef?.id,
+                    email: docRef?.email,
+                    name: docRef?.name,
+                    cpf: docRef?.cpf || '',
+                    address: docRef?.address,
+                    cnpj: docRef?.cnpj || '',
+                    rg: docRef?.rg || '',
+                    phone: docRef?.phone || '',
+                    created_at: docRef?.created_at
+                }
+            }
+        });
+    };
+
     useEffect(
         () =>
             firebase.auth().onAuthStateChanged((user) => {
                 if (user) {
-                    dispatch({
-                        type: LOGIN,
-                        payload: {
-                            isLoggedIn: true,
-                            user: {
-                                id: user.uid,
-                                email: user.email!,
-                                name: user.email || ''
-                            }
-                        }
-                    });
+                    getUser(user.uid);
                 } else {
                     dispatch({
                         type: LOGOUT
