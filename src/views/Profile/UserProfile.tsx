@@ -17,6 +17,13 @@ import { UserProfile as UserProfileType } from 'types/user-profile';
 const UserProfile = () => {
     const { user } = useAuth();
 
+    const formatRg = (v: any) => {
+        v = v.replace(/\D/g, '');
+        v = v.replace(/(\d{1,2})(\d{3})(\d{3})(\d{1})$/, '$1.$2.$3-$4');
+
+        return v;
+    };
+
     const [myUser, setMyUser] = useState(user);
 
     // useEffect(() => {}, []);
@@ -67,7 +74,16 @@ const UserProfile = () => {
                                 />
                             </Grid>
                             <Grid item md={6} xs={12}>
-                                <TextField id="outlined-basic" fullWidth label="Registrado em" defaultValue="**/**/****" />
+                                <TextField
+                                    id="outlined-basic"
+                                    fullWidth
+                                    label="Registrado em"
+                                    defaultValue="**/**/****"
+                                    value={myUser!.phone}
+                                    onChange={(e) => {
+                                        setMyUser({ ...myUser, phone: e.target.value });
+                                    }}
+                                />
                             </Grid>
                             <Grid item md={6} xs={12}>
                                 <CurrencyFormat
@@ -118,7 +134,7 @@ const UserProfile = () => {
                                     fullWidth
                                     label="RG"
                                     defaultValue="0000000000000"
-                                    value={myUser!.rg}
+                                    value={formatRg(myUser!.rg)}
                                     onChange={(e) => {
                                         setMyUser({ ...myUser, rg: e.target.value });
                                     }}

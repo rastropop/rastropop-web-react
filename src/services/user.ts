@@ -1,7 +1,6 @@
 import { UserProfile } from 'types/user-profile';
 import { fireStore } from './firebase';
 
-// eslint-disable-next-line import/prefer-default-export
 export async function myProfile(id: string): Promise<firebase.default.firestore.DocumentData | undefined | UserProfile> {
     const docRef = (await fireStore.collection('users').doc(id).get()).data();
 
