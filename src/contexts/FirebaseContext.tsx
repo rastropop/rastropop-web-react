@@ -37,7 +37,7 @@ export const FirebaseProvider = ({ children }: { children: React.ReactElement })
 
     const getUser = async (id: string) => {
         const docRef: UserProfile | firebase.firestore.DocumentData | undefined = (
-            await firebase.firestore().collection('users').doc('vPkG66E9iKba6N9w5TGK8iVvKgW2').get()
+            await firebase.firestore().collection('users').doc(id).get()
         ).data();
 
         dispatch({

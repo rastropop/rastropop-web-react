@@ -116,7 +116,7 @@ const Accordion = ({ data, defaultExpandedId = null, expandIcon, square, toggle 
                         </TitleContainer>
                     </MuiAccordionSummary>
                     <MuiAccordionDetails>
-                        {item.bankLine ? (
+                        {item.bankLine && item.bankLine != 'empty' ? (
                             <>
                                 <BankLineContainer
                                     onClick={() => {

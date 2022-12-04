@@ -5,19 +5,22 @@ import { getCustomerByEmail, getMySubscriptionsByCustomerGalaxPayId } from 'util
 import moment from 'moment';
 
 import { useEffect, useState } from 'react';
+import useAuth from 'hooks/useAuth';
 
 // material-ui
 import Accordion from 'ui-component/extended/Accordion/Accordion';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { Divider, Grid, Stack, Typography } from '@mui/material';
 
 // project imports
+import { Subscriptions, Transaction } from 'types/galaxpay';
 import SubCard from 'ui-component/cards/SubCard';
 import { gridSpacing } from 'store/constant';
 
-const formatCnpjCpf = (value: any) => {
+const formatCnpjCpf = (value: string) => {
     const cnpjCpf = value.replace(/\D/g, '');
     if (cnpjCpf.length === 11) {
         // eslint-disable-next-line prettier/prettier
@@ -27,19 +30,21 @@ const formatCnpjCpf = (value: any) => {
     return cnpjCpf.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g, "\$1.\$2.\$3/\$4-\$5");
 };
 
-const handleTelefone = (value: any) => {
+const handleTelefone = (value: string) => {
     const formatted = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
     return formatted;
 };
 
 const SubscriptionsList = () => {
-    const [transactionData, setTransactionData] = useState<any[]>([]);
+    const [formatedTransactionData, setFormatedTransactionData] = useState<any[]>([]);
+    const { user } = useAuth();
+    const [myUser, setMyUser] = useState(user);
 
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     useEffect(() => {
         (async () => {
             // Getting galaxpayId from customer
-            const myEmail = 'rubemarloc@hotmail.com'; // miqueias.fms@gmail.com
+            const myEmail = myUser?.email == undefined || myUser?.email == 'tele@teste.com.br' ? 'rubemarloc@hotmail.com' : myUser?.email; // 'rubemarloc@hotmail.com' to test
             const currentCustomer = await getCustomerByEmail(0, 20, myEmail);
             const customerGalaxPayId = currentCustomer.data.Customers[0].galaxPayId;
 
@@ -47,19 +52,20 @@ const SubscriptionsList = () => {
             const mySubscriptions = await getMySubscriptionsByCustomerGalaxPayId(0, 100, customerGalaxPayId);
 
             // Getting all active subscription
-            let activeSubscriptionsArray: any[] = [];
-            mySubscriptions.data.Subscriptions.forEach((subscription: any) => {
+            let activeSubscriptionsArray: Subscriptions[] = [];
+            mySubscriptions.data.Subscriptions.forEach((subscription: Subscriptions) => {
                 if (subscription.status == 'active') {
                     activeSubscriptionsArray.push(subscription);
                 }
             });
+            console.log(activeSubscriptionsArray);
             // Sorting subscriptions by date - desc
             activeSubscriptionsArray = activeSubscriptionsArray
                 .slice()
-                .sort((a: any, b: any) => new Date(b.payday).valueOf() - new Date(a.payday).valueOf());
+                .sort((a: Subscriptions, b: Subscriptions) => new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf());
 
             const subscriptionsData: any[] = [];
-            activeSubscriptionsArray.forEach((activeSubscription) => {
+            activeSubscriptionsArray.forEach((activeSubscription: Subscriptions) => {
                 const subscriptionData = {
                     customerName: activeSubscription.Customer.name,
                     email: activeSubscription.Customer.emails[0],
@@ -70,15 +76,15 @@ const SubscriptionsList = () => {
 
                 // Sorting transactions by date - desc
                 const sortedTransactions = activeSubscription.Transactions.slice().sort(
-                    (a: any, b: any) => new Date(b.payday).valueOf() - new Date(a.payday).valueOf()
+                    (a: Transaction, b: Transaction) => new Date(b.payday).valueOf() - new Date(a.payday).valueOf()
                 );
 
                 // setting transactionRow
                 const accordionData: any[] = [];
 
-                sortedTransactions.map((transaction: any) => {
+                sortedTransactions.map((transaction: Transaction) => {
                     let statusTitle = transaction.statusDescription;
-                    let content: any = '';
+                    let content: string | JSX.Element = '';
                     let chipColor = '';
                     let bankLine;
 
@@ -100,7 +106,7 @@ const SubscriptionsList = () => {
                             bankLine = transaction.Boleto.bankLine;
                             content = (
                                 <Typography sx={{ fontSize: 17, fontWeight: 400 }}>
-                                    <b>R$</b> {transaction.value} &nbsp; <CalendarMonthIcon sx={{ marginBottom: '-5px' }} />
+                                    <b>R$</b> {transaction.value / 100} &nbsp; <CalendarMonthIcon sx={{ marginBottom: '-5px' }} />
                                     Vencimento em{' '}
                                     <b>
                                         {transaction.payday.split('-')[2]}/{transaction.payday.split('-')[1]}/
@@ -137,14 +143,14 @@ const SubscriptionsList = () => {
                     accordionData
                 });
             });
-            setTransactionData(subscriptionsData);
+            setFormatedTransactionData(subscriptionsData);
         })();
-    });
+    }, [myUser]);
 
     return (
         <>
-            {transactionData.length != 0 &&
-                transactionData.map((data) => (
+            {formatedTransactionData.length != 0 ? (
+                formatedTransactionData.map((data) => (
                     <>
                         <Grid item sx={{ marginBottom: '20px' }} xs={12}>
                             <SubCard title={data.subscriptionData.customerName}>
@@ -237,7 +243,12 @@ const SubscriptionsList = () => {
                             </Grid>
                         </Grid>
                     </>
-                ))}
+                ))
+            ) : (
+                <Grid container alignItems="center" justifyContent="center">
+                    <CircularProgress />
+                </Grid>
+            )}
         </>
     );
 };

@@ -25,10 +25,11 @@ export const getAccessToken = () => {
 // COSTUMERS
 export const getCustomerByEmail = async (start: number, end: number, email: string) => {
     const { data } = await getAccessToken();
-
-    return galaxpayInstance.get(`/customers?startAt=${start}&limit=${end}&emails=${email}`, {
+    const costumer = await galaxpayInstance.get(`/customers?startAt=${start}&limit=${end}&emails=${email}`, {
         headers: { Authorization: `Bearer ${data.access_token}` }
     });
+
+    return costumer;
 };
 
 // SUBSCRIPTIONS
