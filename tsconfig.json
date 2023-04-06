@@ -19,7 +19,7 @@
         "noImplicitAny": true,
         "noImplicitThis": true,
         "strictNullChecks": true,
-        "types": ["node", "webpack-env"],
+        "types": ["node", "webpack-env", "googlemaps", "markerclustererplus"],
         "typeRoots": ["./types"],
         "baseUrl": "src"
     },

@@ -6,8 +6,10 @@ import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
 
 // sample page routing
-const SamplePage = Loadable(lazy(() => import('views/sample-page')));
+// const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 const Profile = Loadable(lazy(() => import('views/Profile')));
+const StopPoints = Loadable(lazy(() => import('views/StopPoints')));
+const Horimetro = Loadable(lazy(() => import('views/Horimetro')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -26,6 +28,14 @@ const MainRoutes = {
         {
             path: '/dashboard',
             element: <Profile />
+        },
+        {
+            path: '/pontosdeParada',
+            element: <StopPoints />
+        },
+        {
+            path: '/horimetro',
+            element: <Horimetro />
         }
     ]
 };

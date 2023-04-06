@@ -9,7 +9,7 @@ import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import moment from 'moment';
 import 'moment/locale/pt-br';
@@ -85,18 +85,6 @@ const Accordion = ({ data, defaultExpandedId = null, expandIcon, square, toggle 
 
     return (
         <Box sx={{ width: '100%' }}>
-            <ToastContainer
-                position="top-right"
-                autoClose={2000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-            />
             {data?.map((item: AccordionItem) => (
                 <MuiAccordion
                     key={item.id}

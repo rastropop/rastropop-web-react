@@ -1,4 +1,4 @@
-import { fireStore } from './firebase';
+import { fireStore, auth } from './firebase';
 import { getTrackerStateByDoc } from 'services/tracker';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -30,4 +30,15 @@ export async function getAllVehicles() {
         })();
     });
     return vehiclesData;
+}
+
+export async function getVehicleByUserId() {
+    const userId = await auth.currentUser?.uid;
+    const vehicles = await fireStore.collection('vehicles').where('id_user', '==', userId).get();
+
+    const vehiclesSnapshotArray: any = [];
+    vehicles.forEach((vehicle: any) => {
+        vehiclesSnapshotArray.push(vehicle.data());
+    });
+    return vehiclesSnapshotArray;
 }

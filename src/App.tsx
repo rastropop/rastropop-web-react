@@ -7,6 +7,7 @@ import NavigationScroll from 'layout/NavigationScroll';
 import RTLLayout from 'ui-component/RTLLayout';
 import Snackbar from 'ui-component/extended/Snackbar';
 import ThemeCustomization from 'themes';
+import { ToastContainer } from 'react-toastify';
 
 // auth provider
 import { FirebaseProvider as AuthProvider } from 'contexts/FirebaseContext';
@@ -17,21 +18,35 @@ import { FirebaseProvider as AuthProvider } from 'contexts/FirebaseContext';
 // ==============================|| APP ||============================== //
 
 const App = () => (
-    <ThemeCustomization>
-        {/* RTL layout */}
-        <RTLLayout>
-            <Locales>
-                <NavigationScroll>
-                    <AuthProvider>
-                        <>
-                            <Routes />
-                            <Snackbar />
-                        </>
-                    </AuthProvider>
-                </NavigationScroll>
-            </Locales>
-        </RTLLayout>
-    </ThemeCustomization>
+    <>
+        <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+        />
+        <ThemeCustomization>
+            {/* RTL layout */}
+            <RTLLayout>
+                <Locales>
+                    <NavigationScroll>
+                        <AuthProvider>
+                            <>
+                                <Routes />
+                                <Snackbar />
+                            </>
+                        </AuthProvider>
+                    </NavigationScroll>
+                </Locales>
+            </RTLLayout>
+        </ThemeCustomization>
+    </>
 );
 
 export default App;

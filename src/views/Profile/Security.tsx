@@ -17,13 +17,13 @@ const Security = () => (
                     <SubCard title="Alterar Senha">
                         <Grid container spacing={gridSpacing}>
                             <Grid item xs={12}>
-                                <TextField id="outlined-basic9" fullWidth label="Senha Atual" />
+                                <TextField fullWidth label="Senha Atual" />
                             </Grid>
                             <Grid item xs={6}>
-                                <TextField id="outlined-basic10" fullWidth label="Nova Senha" />
+                                <TextField fullWidth label="Nova Senha" />
                             </Grid>
                             <Grid item xs={6}>
-                                <TextField id="outlined-basic11" fullWidth label="Digite a Nova Senha novamente" />
+                                <TextField fullWidth label="Digite a Nova Senha novamente" />
                             </Grid>
                             <Grid item xs={12}>
                                 <Stack direction="row">

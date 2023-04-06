@@ -144,7 +144,7 @@ const UserProfile = () => {
                             <Grid item xs={12}>
                                 <Stack direction="row">
                                     <AnimateButton>
-                                        <Button onClick={handleSave} variant="contained">
+                                        <Button onClick={handleSave} variant="outlined">
                                             Salvar
                                         </Button>
                                     </AnimateButton>

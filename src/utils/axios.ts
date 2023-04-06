@@ -10,6 +10,11 @@ const galaxpayInstance = axios.create({
     baseURL: `https://api.galaxpay.com.br/v2`
 });
 
+// GOOGLE MAPS REQUESTS
+const googleMapsInstance = axios.create({
+    baseURL: `https://maps.googleapis.com/maps/api`
+});
+
 export const getAccessToken = () => {
     const galaxId = '3800';
     const galaxHash = '5gTo0jX6NnS7FsXt83HjHyIwQvNjBmE072RbJl2k';
@@ -40,6 +45,9 @@ export const getMySubscriptionsByCustomerGalaxPayId = async (start: number, end:
         headers: { Authorization: `Bearer ${data.access_token}` }
     });
 };
+
+export const getAddressByLatLng = async (lat: number, lng: number) =>
+    googleMapsInstance.get(`/geocode/json?latlng=${lat},${lng}&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}`);
 
 // Mock calls
 

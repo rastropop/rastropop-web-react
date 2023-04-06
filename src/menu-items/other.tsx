@@ -24,6 +24,22 @@ const other = {
             url: '/dashboard',
             icon: icons.IconBrandChrome,
             breadcrumbs: false
+        },
+        {
+            id: 'Pontosdeparada',
+            title: <FormattedMessage id="Pontos de parada" />,
+            type: 'item',
+            url: '/pontosDeParada',
+            icon: icons.IconBrandChrome,
+            breadcrumbs: false
+        },
+        {
+            id: 'Horimetro',
+            title: <FormattedMessage id="Horimetro" />,
+            type: 'item',
+            url: '/horimetro',
+            icon: icons.IconBrandChrome,
+            breadcrumbs: false
         }
     ]
 };
