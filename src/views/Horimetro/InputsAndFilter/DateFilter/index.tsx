@@ -142,12 +142,12 @@ const DateFilter: React.FC<Props> = ({ setStartDate, setEndDate }) => {
         });
         setStartDate(ranges.selection.startDate);
         // @ts-ignore
-        setEndDate(new Date(moment(ranges.selection.endDate).add(moment.duration('23:59'))));
+        setEndDate(new Date(moment(ranges.selection.endDate).add(moment.duration('23:59:59'))));
 
         console.log('---');
         console.log(ranges.selection.startDate);
         // @ts-ignore
-        console.log(new Date(moment(ranges.selection.endDate).add(moment.duration('23:59'))));
+        console.log(new Date(moment(ranges.selection.endDate).add(moment.duration('23:59:59'))));
     };
 
     return (

@@ -10,6 +10,12 @@ import Loadable from 'ui-component/Loadable';
 const Profile = Loadable(lazy(() => import('views/Profile')));
 const StopPoints = Loadable(lazy(() => import('views/StopPoints')));
 const Horimetro = Loadable(lazy(() => import('views/Horimetro')));
+const Trajetos = Loadable(lazy(() => import('views/Trajetos')));
+const ExceededSpeed = Loadable(lazy(() => import('views/ExceededSpeed')));
+const InterestZones = Loadable(lazy(() => import('views/InterestZones')));
+const Dashboard = Loadable(lazy(() => import('views/Dashboard')));
+const PositionHistory = Loadable(lazy(() => import('views/PositionHistory')));
+const Tracking = Loadable(lazy(() => import('views/Tracking')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -26,7 +32,7 @@ const MainRoutes = {
             element: <Profile />
         },
         {
-            path: '/dashboard',
+            path: '/profile',
             element: <Profile />
         },
         {
@@ -36,6 +42,30 @@ const MainRoutes = {
         {
             path: '/horimetro',
             element: <Horimetro />
+        },
+        {
+            path: '/trajetos',
+            element: <Trajetos />
+        },
+        {
+            path: '/velocidadeExcedida',
+            element: <ExceededSpeed />
+        },
+        {
+            path: '/zonaDeInteresse',
+            element: <InterestZones />
+        },
+        {
+            path: '/dashboard',
+            element: <Dashboard />
+        },
+        {
+            path: '/historicoDePosicoes',
+            element: <PositionHistory />
+        },
+        {
+            path: '/localizar',
+            element: <Tracking />
         }
     ]
 };

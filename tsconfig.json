@@ -23,5 +23,5 @@
         "typeRoots": ["./types"],
         "baseUrl": "src"
     },
-    "include": ["src"]
+    "include": ["src", "src/views/Dashboard/chart-data", "src/views/Dashboard/chart-data"]
 }

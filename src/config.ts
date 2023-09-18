@@ -6,7 +6,7 @@ export const JWT_API = {
     timeout: '1 days'
 };
 
-// DESENVOLVIMENTO
+// // DESENVOLVIMENTO
 // export const FIREBASE_API = {
 //     apiKey: 'AIzaSyDH_7_wOu01itmJsIpkMuOuyax5G8LwTkU',
 //     authDomain: 'letmeask-e9ab2.firebaseapp.com',
@@ -43,7 +43,8 @@ export const AWS_API = {
 // like '/berry-material-react/react/default'
 export const BASE_PATH = '';
 
-export const DASHBOARD_PATH = '/dashboard';
+// Main page
+export const DASHBOARD_PATH = '/profile';
 
 const config: ConfigProps = {
     fontFamily: `'Roboto', sans-serif`,

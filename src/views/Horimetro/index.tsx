@@ -717,7 +717,7 @@ const Horimetro = () => {
                         <img src={logo} alt="logo_rastro" style={{ width: 170, height: 100, marginTop: 10 }} />
                     </Grid>
                     <Grid item xs={6} sx={{ textAlign: 'center' }}>
-                        <h2>Pontos de Parada</h2>
+                        <h2>Horímetro</h2>
                         <h4 style={{ marginTop: 5, marginBottom: 5 }}>Cliente: R2 Construções e Transportes EIRELI ME</h4>
                         <h4 style={{ marginTop: 5, marginBottom: 5 }}>Gerado em: 13/03/2023 18:37</h4>
                     </Grid>

@@ -40,7 +40,6 @@ const StopPoints = () => {
     const [reRenderMap, setRerenderMap] = useState<boolean>();
     const [reRenderTable, setRerenderTable] = useState<boolean>();
 
-    const google = window.google;
     const defaultCenter = {
         lat: -3.7402,
         lng: -38.4997
@@ -334,7 +333,6 @@ const StopPoints = () => {
                 filteredPoints.push(element);
             }
         });
-        console.log(historyPointsArray);
 
         setHistoryPoints(historyPointsArray);
         setInfoWindowToggle(infoWindowToggleArray);
@@ -396,7 +394,7 @@ const StopPoints = () => {
 
     return (
         <>
-            <h1>Pontos de parada</h1>
+            <h1>Histórico de posições</h1>
             <InputsAndFilter
                 setStartDate={setStartDate}
                 setEndDate={setEndDate}
@@ -544,44 +542,44 @@ const StopPoints = () => {
                                     <TableCell align="left">Duração</TableCell>
                                 </TableRow>
                             </TableHead>
+                            <TableBody>
+                                {historyPoints?.map((element: any, index: number) => {
+                                    const pointDate = formatDate(element.element.timestamp).split(' ');
+                                    const diff = Math.abs(element.startTime - element.endTime);
+                                    // eslint-disable-next-line @typescript-eslint/no-shadow
+                                    const durationParkMin = Math.ceil(diff / (1000 * 60));
+
+                                    let parkingTimeStr = `${durationParkMin}min`;
+                                    if (durationParkMin > 60) {
+                                        const hoursPark = Math.floor(durationParkMin / 60);
+                                        const minPark = durationParkMin % 60;
+
+                                        parkingTimeStr = `${hoursPark}h` + ` ${minPark}min`;
+                                    }
+
+                                    return (
+                                        <TableRow>
+                                            <TableCell align="left">{index}</TableCell>
+                                            <TableCell align="left">
+                                                {pointDate[0]} <br />
+                                                {pointDate[1]}
+                                            </TableCell>
+                                            <TableCell align="left">{element.parkingACC == 1 ? 'true' : 'false'}</TableCell>
+                                            <TableCell>
+                                                {element.parkingACC == 1 ? <b>Ponto de parada ocioso:</b> : <b>Ponto de parada:</b>}{' '}
+                                                {element.address}
+                                                {element.key == 'parada'
+                                                    ? `${formatDate(element.startTime).split(' ')[1]} às ${
+                                                          formatDate(element.endTime).split(' ')[1]
+                                                      }`
+                                                    : ''}
+                                            </TableCell>
+                                            <TableCell>{parkingTimeStr || <></>}</TableCell>
+                                        </TableRow>
+                                    );
+                                })}
+                            </TableBody>
                         </Table>
-                        <TableBody>
-                            {historyPoints?.map((element: any, index: number) => {
-                                const pointDate = formatDate(element.element.timestamp).split(' ');
-                                const diff = Math.abs(element.startTime - element.endTime);
-                                // eslint-disable-next-line @typescript-eslint/no-shadow
-                                const durationParkMin = Math.ceil(diff / (1000 * 60));
-
-                                let parkingTimeStr = `${durationParkMin}min`;
-                                if (durationParkMin > 60) {
-                                    const hoursPark = Math.floor(durationParkMin / 60);
-                                    const minPark = durationParkMin % 60;
-
-                                    parkingTimeStr = `${hoursPark}h` + ` ${minPark}min`;
-                                }
-
-                                return (
-                                    <TableRow>
-                                        <TableCell align="left">{index}</TableCell>
-                                        <TableCell align="left">
-                                            {pointDate[0]} <br />
-                                            {pointDate[1]}
-                                        </TableCell>
-                                        <TableCell align="left">{element.parkingACC == 1 ? 'true' : 'false'}</TableCell>
-                                        <TableCell>
-                                            {element.parkingACC == 1 ? <b>Ponto de parada ocioso:</b> : <b>Ponto de parada:</b>}{' '}
-                                            {element.address}
-                                            {element.key == 'parada'
-                                                ? `${formatDate(element.startTime).split(' ')[1]} às ${
-                                                      formatDate(element.endTime).split(' ')[1]
-                                                  }`
-                                                : ''}
-                                        </TableCell>
-                                        <TableCell>{parkingTimeStr || <></>}</TableCell>
-                                    </TableRow>
-                                );
-                            })}
-                        </TableBody>
                     </TableContainer>
                 </Grid>
             </Grid>

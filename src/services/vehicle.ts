@@ -42,3 +42,13 @@ export async function getVehicleByUserId() {
     });
     return vehiclesSnapshotArray;
 }
+
+export async function getVehicleByImei(imei: string) {
+    const vehicle = await fireStore.collection('vehicles').where('tracker_imei', '==', imei).get();
+    let data;
+    // eslint-disable-next-line @typescript-eslint/no-shadow, arrow-body-style
+    vehicle.forEach((vehicle: any) => {
+        data = vehicle.data();
+    });
+    return data;
+}

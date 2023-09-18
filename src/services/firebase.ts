@@ -14,4 +14,7 @@ const auth = firebase.auth();
 const fireStore = firebase.firestore();
 const storage = firebase.storage();
 
-export { auth, fireStore, storage };
+const fireStoreFieldValue = firebase.firestore.FieldValue;
+const fireStoreBatch = firebase.firestore().batch();
+
+export { auth, fireStore, storage, fireStoreFieldValue, fireStoreBatch };

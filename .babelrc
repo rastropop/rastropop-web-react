@@ -1,0 +1,22 @@
+{
+    "presets": ["@babel/preset-env", "@babel/preset-react"],
+    "plugins": [
+      "@babel/plugin-proposal-optional-chaining",
+      "@babel/plugin-proposal-nullish-coalescing-operator"
+    ]
+  }
+//   interface Props {
+//     children?: React.ReactNode;
+//     defaultCenter: { lat: number; lng: number };
+//     apiKey: string | undefined;
+//     points: any[];
+// }
+
+// const containerStyle = {
+//     width: '100%',
+//     height: '100%'
+// };
+
+// const googleMapsLibraries = ['places', 'geometry'];
+
+// const GoogleMapComponent = ({ children, defaultCenter, apiKey = 'null', points }: Props) => {

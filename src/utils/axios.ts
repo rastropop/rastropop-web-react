@@ -3,6 +3,7 @@
  */
 
 import axios from 'axios';
+import { auth } from 'services/firebase';
 
 // GALAXPAY REQUESTS
 
@@ -48,6 +49,29 @@ export const getMySubscriptionsByCustomerGalaxPayId = async (start: number, end:
 
 export const getAddressByLatLng = async (lat: number, lng: number) =>
     googleMapsInstance.get(`/geocode/json?latlng=${lat},${lng}&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}`);
+
+export const callUpdateZonesToApplyChanges = async () => {
+    alert('executando callUpdateZonesToApplyChanges comentado');
+    // const url = 'http://34.216.152.167:21800/api/security_areas/updateAllSecurityAreas';
+    // const idToken = await auth.currentUser?.getIdToken(true);
+    // const uid = auth.currentUser?.uid;
+
+    // await axios.post(
+    //     url,
+    //     {
+    //         user_id: uid,
+    //         token: idToken
+    //     },
+    //     {
+    //         withCredentials: false,
+    //         headers: {
+    //             'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+    //             'Access-Control-Allow-Origin': '*',
+    //             'Content-Type': 'application/x-www-form-urlencoded'
+    //         }
+    //     }
+    // );
+};
 
 // Mock calls
 
